@@ -34,4 +34,16 @@
         android:layout_marginTop="130dp"
         />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addNew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/purple_200"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
