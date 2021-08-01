@@ -2,6 +2,7 @@ package com.mani.wordwizard
 
 import androidx.lifecycle.*
 import kotlinx.coroutines.launch
+import java.lang.IllegalArgumentException
 
 class WordViewModel(private val repository: WordRepository) : ViewModel() {
     val getAllWords : LiveData<List<Word>> = repository.allWords.asLiveData()
@@ -22,7 +23,7 @@ class WordViewModelFactory(private val repository: WordRepository) : ViewModelPr
            @Suppress("UNCHECKED_CAST")
            return WordViewModel(repository) as T
        }
-        throw IllegalArgumentException("unrecognized view model class")
+       throw IllegalArgumentException("unrecognised viewmodel class")
     }
 
 }

@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.Flow
 interface WordDao {
 
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(word:Word)
 
     @Delete
     suspend fun delete(word: Word)
 
-    @Query("SELECT * FROM WORD_TABLE ORDER BY word ASC")
+    @Query("SELECT * FROM WORD_TABLE")
     fun getWords() : Flow<List<Word>>
 
 }
