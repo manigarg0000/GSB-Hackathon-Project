@@ -1,5 +1,8 @@
 package com.mani.wordwizard
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class WordListAdapter : ListAdapter<Word, WordListAdapter.WordViewHolder>(WordComparator()) {
+class WordListAdapter(private val context : Context) : ListAdapter<Word, WordListAdapter.WordViewHolder>(WordComparator()) {
 
     class WordViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         val wordTV : TextView = itemView.findViewById(R.id.word_textView)
@@ -34,6 +37,15 @@ class WordListAdapter : ListAdapter<Word, WordListAdapter.WordViewHolder>(WordCo
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
        val current = getItem(position)
         holder.bind(current.word)
+
+        holder.wordTV.setOnClickListener {
+            val queryUrl: Uri = Uri.parse("${MainActivity.PREFIX_FORSEARCH}${current.word}")
+            val intent = Intent(Intent.ACTION_VIEW, queryUrl)
+            context.startActivity(intent)
+        }
+
+
+
     }
 
 }

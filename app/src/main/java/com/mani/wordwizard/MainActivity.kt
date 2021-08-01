@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val fab = findViewById<FloatingActionButton>(R.id.fab_addNew)
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = WordListAdapter()
+        val adapter = WordListAdapter(this)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         }).attachToRecyclerView(recyclerView)
 
 
-        
+
         fab.setOnClickListener {
             val intent = Intent(this@MainActivity, AddWordActivity::class.java)
             startActivityForResult(intent, requestCodeForAddWordActivity)
@@ -72,4 +72,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Empty field cannot be added", Toast.LENGTH_LONG).show()
         }
     }
+
+
+    companion object {
+        val PREFIX_FORSEARCH = "https://www.google.com/search?q="
+    }
+
 }
