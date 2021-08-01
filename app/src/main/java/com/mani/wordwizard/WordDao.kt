@@ -14,7 +14,7 @@ interface WordDao {
     @Delete
     suspend fun delete(word: Word)
 
-    @Query("SELECT * FROM WORD_TABLE")
+    @Query("SELECT * FROM WORD_TABLE ORDER BY word ASC")
     fun getWords() : Flow<List<Word>>
 
 }
